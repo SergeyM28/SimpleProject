@@ -4,11 +4,11 @@ import java.util.List;
 
 public class StudentGroup {
     private Teacher teacher;
-    private List<Student> liatOfStudents;
+    private List<Student> listOfStudents;
 
     public StudentGroup(Teacher teacher, List<Student> liatOfStudents) {
         this.teacher = teacher;
-        this.liatOfStudents = liatOfStudents;
+        this.listOfStudents = liatOfStudents;
     }
 
     public Teacher getTeacher() {
@@ -19,12 +19,12 @@ public class StudentGroup {
         this.teacher = teacher;
     }
 
-    public List<Student> getLiatOfStudents() {
-        return liatOfStudents;
+    public List<Student> getListOfStudents() {
+        return listOfStudents;
     }
 
-    public void setLiatOfStudents(List<Student> liatOfStudents) {
-        this.liatOfStudents = liatOfStudents;
+    public void setListOfStudents(List<Student> listOfStudents) {
+        this.listOfStudents = listOfStudents;
     }
 
 }

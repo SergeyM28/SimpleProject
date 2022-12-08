@@ -1,14 +1,12 @@
 package ru.gb.oseminar.Controller;
 
-import ru.gb.oseminar.data.Student;
-import ru.gb.oseminar.data.StudentGroup;
-import ru.gb.oseminar.data.Teacher;
-import ru.gb.oseminar.data.User;
+import ru.gb.oseminar.data.*;
 import ru.gb.oseminar.service.StudentGroupService;
 import ru.gb.oseminar.service.UserService;
 import ru.gb.oseminar.view.StudentView;
 
-import java.util.List;
+import javax.swing.plaf.synth.SynthToolTipUI;
+import java.util.*;
 
 public class Controller {
     private final UserService userService = new UserService();
@@ -40,6 +38,23 @@ public class Controller {
         StudentGroupService sgt = new StudentGroupService();
         StudentGroup studentGroup = sgt.FormGroup(teacherToAdd, studentsToAdd);
         return studentGroup;
+    }
+    public void showSortStudengGroup(List<Student> studentList){
+        Collections.sort(studentList, new StudentGroupComparator());
+        studentView.showStudents(studentList);
+    }
+
+    public Map<Student, Integer> formMapOfStudentsByGroup(Map<Student, Integer> currentMap, List<Student> listOfStudents, Integer groupNumber) {
+        for (Student item : listOfStudents){
+            currentMap.put(item, groupNumber);
+        }
+        return currentMap;
+    }
+
+    public void showSortStudentsByGroup(Map<Student, Integer> mapOfStudents){
+        List<Student> allStudents = new ArrayList<>(mapOfStudents.keySet());
+        Collections.sort(allStudents, new StudentGroupComparator());
+        studentView.showStudentsByGroup(mapOfStudents, allStudents);
     }
 
 }
